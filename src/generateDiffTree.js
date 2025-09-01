@@ -3,7 +3,8 @@ import _ from "lodash";
 const generateDiffTree = (obj1, obj2) => {
     const keys1 = Object.keys(obj1)
     const keys2 = Object.keys(obj2)
-    const sortedKeys = _.union(keys1,keys2).sort()
+    const allKeys = _.union(keys1,keys2)
+    const sortedKeys = _.sortBy(allKeys)
     const diff = []
     for (const key of sortedKeys) {
         if (Object.hasOwn(obj1, key) && !Object.hasOwn(obj2, key)) {
