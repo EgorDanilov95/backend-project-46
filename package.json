@@ -2,7 +2,8 @@
   "name": "@hexlet/code",
   "type": "module",
   "bin": {
-	"gendiff" : "bin/gendiff.js"},
+    "gendiff": "bin/gendiff.js"
+  },
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/EgorDanilov95/backend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/EgorDanilov95/backend-project-46/actions)",
   "homepage": "https://github.com/EgorDanilov95/backend-project-46#readme",
@@ -15,12 +16,13 @@
   },
   "license": "ISC",
   "author": "",
-  "main": "index.js",
+  "main": "src/gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "commander": "^14.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   }
 }
