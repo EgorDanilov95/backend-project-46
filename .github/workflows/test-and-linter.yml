@@ -1,25 +1,20 @@
-name: Test and Linter
+name: CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ "main" ]
 
 jobs:
-  test-and-lint:
-    name: Run Tests and Linter
+  # This workflow contains a single job called "build"
+  check_test_and_lint:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
 
-    - name: Run linter
-      run: make lint
+      - run: make install
+      - run: make lint
+      - run: make test
 
-    - name: Run tests
-      run: make test
-
-    - name: Run tests with coverage
-      run: make test-coverage
