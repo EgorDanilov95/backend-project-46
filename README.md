@@ -6,3 +6,5 @@
 
 
 Demonstration of jsonFiles comparison: https://asciinema.org/connect/9af304f0-6b01-4984-84a5-0593b661fe01
+
+Demonstration of yamlFiles comparison: https://asciinema.org/connect/9af304f0-6b01-4984-84a5-0593b661fe01
