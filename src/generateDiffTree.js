@@ -17,19 +17,18 @@ const generateDiffTree = (obj1, obj2) => {
       diff.push({ keyName: key, type: 'unchanged', value: obj1[key] })
     }
     else if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-  const children = generateDiffTree(obj1[key], obj2[key])
-  diff.push({ 
-    keyName: key, 
-    type: 'nested', 
-    children: children
-  })
-}
+      const children = generateDiffTree(obj1[key], obj2[key])
+      diff.push({
+        keyName: key,
+        type: 'nested',
+        children: children,
+      })
+    }
     else {
       diff.push({ keyName: key, type: 'changed', oldValue: obj1[key], newValue: obj2[key] })
     }
   }
   return diff
 }
-
 
 export default generateDiffTree
