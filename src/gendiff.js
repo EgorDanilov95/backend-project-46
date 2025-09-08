@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import parser from './parsers.js'
 import generateDiffTree from './generateDiffTree.js'
-import formatDiffString from './StringJson.js'
+import stylish from './formatters/stylish.js'
 
 const genDiff = (filepath1, filepath2) => {
   const data1 = fs.readFileSync(filepath1, 'utf-8')
@@ -14,7 +14,7 @@ const genDiff = (filepath1, filepath2) => {
   const obj2 = parser(data2, format2)
 
   const diffTree = generateDiffTree(obj1, obj2)
-  return formatDiffString(diffTree)
+  return stylish(diffTree)
 }
-
+console.log(genDiff('../__fixtures__/file1.json', '../__fixtures__/file2.json'))
 export default genDiff
