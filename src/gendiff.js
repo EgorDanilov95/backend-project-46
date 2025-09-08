@@ -16,5 +16,5 @@ const genDiff = (filepath1, filepath2) => {
   const diffTree = generateDiffTree(obj1, obj2)
   return stylish(diffTree)
 }
-console.log(genDiff('../__fixtures__/file1.json', '../__fixtures__/file2.json'))
+
 export default genDiff
