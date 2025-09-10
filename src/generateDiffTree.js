@@ -8,7 +8,7 @@ const generateDiffTree = (obj1, obj2) => {
   const diff = []
   for (const key of sortedKeys) {
     if (Object.hasOwn(obj1, key) && !Object.hasOwn(obj2, key)) {
-      diff.push({ keyName: key, type: 'deleted', value: obj1[key] })
+      diff.push({ keyName: key, type: 'removed', value: obj1[key] })
     }
     else if (!Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)) {
       diff.push({ keyName: key, type: 'added', value: obj2[key] })
@@ -25,7 +25,7 @@ const generateDiffTree = (obj1, obj2) => {
       })
     }
     else {
-      diff.push({ keyName: key, type: 'changed', oldValue: obj1[key], newValue: obj2[key] })
+      diff.push({ keyName: key, type: 'updated', oldValue: obj1[key], newValue: obj2[key] })
     }
   }
   return diff

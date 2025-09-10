@@ -8,9 +8,10 @@ program
   .version('1.0.0')
   .argument('<filepath1>')
   .argument('<filepath2>')
-  .option('-f, --format <type>', 'output format', 'stylish')
-  .action((filepath1, filepath2, options) => {
-    const result = gendiff(filepath1, filepath2, options.format)
+  .option('-f, --format <type>', 'output format(stylish, json, plain)', 'stylish')
+  .action((filepath1, filepath2) => {
+    const option = program.opts()
+    const result = gendiff(filepath1, filepath2, option.format)
     console.log(result)
   })
 program.parse()

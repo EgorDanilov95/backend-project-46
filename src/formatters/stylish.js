@@ -22,11 +22,11 @@ const stylish = (diff) => {
     switch (currentValue.type) {
       case 'added':
         return `${indent(depth, 2)}+ ${currentValue.keyName}: ${stringify(currentValue.value, depth)}`
-      case 'deleted':
+      case 'removed':
         return `${indent(depth, 2)}- ${currentValue.keyName}: ${stringify(currentValue.value, depth)}`
       case 'unchanged':
         return `${indent(depth, 2)}  ${currentValue.keyName}: ${stringify(currentValue.value, depth)}`
-      case 'changed':
+      case 'updated':
         return `${indent(depth, 2)}- ${currentValue.keyName}: ${stringify(currentValue.oldValue, depth)}\n${indent(depth, 2)}+ ${currentValue.keyName}: ${stringify(currentValue.newValue, depth)}`
       case 'nested':
         return [`${indent(depth) + currentValue.keyName}: {`, ...currentValue.children.flatMap(child => iter(child, depth + 1)), `${indent(depth)}}`]
