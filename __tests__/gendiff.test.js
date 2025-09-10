@@ -9,50 +9,57 @@ const __dirname = dirname(__filename)
 const getFixturePath = filename => path.join(__dirname, '..', '__fixtures__', filename)
 const readFile = filename => fs.readFileSync(getFixturePath(filename), 'utf-8')
 
-test('json compairison stylish', () => {
-  const file1 = getFixturePath('file1.json')
-  const file2 = getFixturePath('file2.json')
-  const result = genDiff(file1, file2)
-  const expected = readFile('expected-Stylish.txt')
-  expect(result.trim()).toEqual(expected.trim())
-})
+describe('gendiff', () => {
+  const testCases = [
+    {
+      name: 'json files with stylish format',
+      file1: 'file1.json',
+      file2: 'file2.json',
+      format: 'stylish',
+      expected: 'expected-Stylish.txt'
+    },
+    {
+      name: 'yaml files with stylish format', 
+      file1: 'file1.yaml',
+      file2: 'file2.yaml',
+      format: 'stylish',
+      expected: 'expected-Stylish.txt'
+    },
+    {
+      name: 'yaml files with plain format',
+      file1: 'file1.yaml',
+      file2: 'file2.yaml', 
+      format: 'plain',
+      expected: 'expected-plain.txt'
+    },
+    {
+      name: 'json files with plain format',
+      file1: 'file1.json',
+      file2: 'file2.json',
+      format: 'plain',
+      expected: 'expected-plain.txt'
+    },
+    {
+      name: 'json files with json format',
+      file1: 'file1.json',
+      file2: 'file2.json',
+      format: 'json',
+      expected: 'expected-json.txt'
+    },
+    {
+      name: 'yaml files with json format',
+      file1: 'file1.yaml',
+      file2: 'file2.yaml',
+      format: 'json',
+      expected: 'expected-json.txt'
+    }
+  ]
 
-test('yaml compairison stylish', () => {
-  const file1 = getFixturePath('file1.yaml')
-  const file2 = getFixturePath('file2.yaml')
-  const result = genDiff(file1, file2)
-  const expected = readFile('expected-Stylish.txt')
-  expect(result.trim()).toEqual(expected.trim())
-})
-
-test('yaml compairison plain', () => {
-  const file1 = getFixturePath('file1.yaml')
-  const file2 = getFixturePath('file2.yaml')
-  const result = genDiff(file1, file2, 'plain')
-  const expected = readFile('expected-plain.txt')
-  expect(result.trim()).toEqual(expected.trim())
-})
-
-test('json compairison plain', () => {
-  const file1 = getFixturePath('file1.json')
-  const file2 = getFixturePath('file2.json')
-  const result = genDiff(file1, file2, 'plain')
-  const expected = readFile('expected-plain.txt')
-  expect(result.trim()).toEqual(expected.trim())
-})
-
-test('json format json-files', () => {
-  const file1 = getFixturePath('file1.json')
-  const file2 = getFixturePath('file2.json')
-  const result = genDiff(file1, file2, 'json')
-  const expected = readFile('expected-json.txt')
-  expect(result.trim()).toEqual(expected.trim())
-})
-
-test('json format yaml-files', () => {
-  const file1 = getFixturePath('file1.yaml')
-  const file2 = getFixturePath('file2.yaml')
-  const result = genDiff(file1, file2, 'json')
-  const expected = readFile('expected-json.txt')
-  expect(result.trim()).toEqual(expected.trim())
+  test.each(testCases)('$name', ({ file1, file2, format, expected }) => {
+    const filePath1 = getFixturePath(file1)
+    const filePath2 = getFixturePath(file2)
+    const result = genDiff(filePath1, filePath2, format)
+    const expectedContent = readFile(expected)
+    expect(result.trim()).toEqual(expectedContent.trim())
+  })
 })
