@@ -16,43 +16,43 @@ describe('gendiff', () => {
       file1: 'file1.json',
       file2: 'file2.json',
       format: 'stylish',
-      expected: 'expected-Stylish.txt'
+      expected: 'expected-Stylish.txt',
     },
     {
-      name: 'yaml files with stylish format', 
+      name: 'yaml files with stylish format',
       file1: 'file1.yaml',
       file2: 'file2.yaml',
       format: 'stylish',
-      expected: 'expected-Stylish.txt'
+      expected: 'expected-Stylish.txt',
     },
     {
       name: 'yaml files with plain format',
       file1: 'file1.yaml',
-      file2: 'file2.yaml', 
+      file2: 'file2.yaml',
       format: 'plain',
-      expected: 'expected-plain.txt'
+      expected: 'expected-plain.txt',
     },
     {
       name: 'json files with plain format',
       file1: 'file1.json',
       file2: 'file2.json',
       format: 'plain',
-      expected: 'expected-plain.txt'
+      expected: 'expected-plain.txt',
     },
     {
       name: 'json files with json format',
       file1: 'file1.json',
       file2: 'file2.json',
       format: 'json',
-      expected: 'expected-json.txt'
+      expected: 'expected-json.txt',
     },
     {
       name: 'yaml files with json format',
       file1: 'file1.yaml',
       file2: 'file2.yaml',
       format: 'json',
-      expected: 'expected-json.txt'
-    }
+      expected: 'expected-json.txt',
+    },
   ]
 
   test.each(testCases)('$name', ({ file1, file2, format, expected }) => {
