@@ -18,7 +18,8 @@
   "author": "",
   "main": "src/gendiff.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+"test:coverage": "jest --coverage"
   },
   "dependencies": {
     "commander": "^14.0.0",
