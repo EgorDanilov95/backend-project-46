@@ -4,7 +4,7 @@ export default {
   testMatch: ['**/__tests__/**/*.test.js'],
 
   collectCoverage: false,
-  coverageDirectory: 'coverage', 
+  coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
 
   collectCoverageFrom: [
