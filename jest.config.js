@@ -6,7 +6,6 @@ export default {
   collectCoverage: false,
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
-
   collectCoverageFrom: [
     'src/**/*.js',
   ],
