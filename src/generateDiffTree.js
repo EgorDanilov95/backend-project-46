@@ -13,9 +13,6 @@ const generateDiffTree = (obj1, obj2) => {
     else if (!Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)) {
       diff.push({ keyName: key, type: 'added', value: obj2[key] })
     }
-    else if (obj1[key] === obj2[key]) {
-      diff.push({ keyName: key, type: 'unchanged', value: obj1[key] })
-    }
     else if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
       const children = generateDiffTree(obj1[key], obj2[key])
       diff.push({
@@ -24,8 +21,11 @@ const generateDiffTree = (obj1, obj2) => {
         children: children,
       })
     }
-    else {
+    else if (obj1[key] !== obj2[key]) {
       diff.push({ keyName: key, type: 'updated', oldValue: obj1[key], newValue: obj2[key] })
+    }
+    else {
+      diff.push({ keyName: key, type: 'unchanged', value: obj1[key] })
     }
   }
   return diff
